@@ -144,9 +144,6 @@ class LangJsGenerator
             }else{
                 $dir_keys = explode('/', $key);
             }
-            
-            $dir_keys = str_replace('\\', '.', $key);
-            $dir_keys = str_replace('/', '.', $key);
 
             if (Str::startsWith($key, 'vendor')) {
                 $key = $this->getVendorKey($key);
