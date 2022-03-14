@@ -138,10 +138,10 @@ class LangJsGenerator
 
             $key = substr($pathName, 0, -4);
             $key = str_replace('.', '', $key);
-            $dir_keys = explode('\\', $key);
+//             $dir_keys = explode('\\', $key);
             
-            // $key = str_replace('\\', '.', $key);
-            // $key = str_replace('/', '.', $key);
+            $dir_keys = str_replace('\\', '.', $key);
+            $dir_keys = str_replace('/', '.', $key);
 
             if (Str::startsWith($key, 'vendor')) {
                 $key = $this->getVendorKey($key);
