@@ -138,7 +138,12 @@ class LangJsGenerator
 
             $key = substr($pathName, 0, -4);
             $key = str_replace('.', '', $key);
-//             $dir_keys = explode('\\', $key);
+            
+            if(str_contains($key, '\\')){
+                $dir_keys = explode('\\', $key);
+            }else{
+                $dir_keys = explode('/', $key);
+            }
             
             $dir_keys = str_replace('\\', '.', $key);
             $dir_keys = str_replace('/', '.', $key);
@@ -151,7 +156,6 @@ class LangJsGenerator
             if ($extension == 'php') {
                 $messages[$key] = include $fullPath;
             } else {
-                // $key = $key.$this->stringsDomain;
                 $fileContent = file_get_contents($fullPath);
                 $messages[$dir_keys[0]][$dir_keys[1]] =  json_decode($fileContent, true);
 
